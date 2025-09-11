@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/debtsFragment"
+        android:icon="@drawable/ic_debts"
+        android:title="Deudas" />
+    <item
+        android:id="@+id/goalsFragment"
+        android:icon="@drawable/ic_goals"
+        android:title="Metas" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Perfil" />
+</menu>
