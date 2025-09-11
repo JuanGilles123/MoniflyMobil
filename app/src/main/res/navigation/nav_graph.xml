@@ -19,4 +19,9 @@
         android:name="com.juangilles123.monifly.ui.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/analyticsFragment2"
+        android:name="com.juangilles123.monifly.AnalyticsFragment"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
 </navigation>
