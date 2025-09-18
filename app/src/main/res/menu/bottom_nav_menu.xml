@@ -3,11 +3,12 @@
     <item
         android:id="@+id/dashboardFragment"
         android:icon="@drawable/ic_dashboard"
-        android:title="Dashboard" />
+        android:title="Inicio" />
     <item
         android:id="@+id/debtsFragment"
         android:icon="@drawable/ic_debts"
         android:title="Deudas" />
+    <!--
     <item
         android:id="@+id/goalsFragment"
         android:icon="@drawable/ic_goals"
@@ -20,4 +21,5 @@
         android:id="@+id/analyticsFragment"
         android:icon="@drawable/ic_analytics"
         android:title="Análisis" />
+    -->
 </menu>

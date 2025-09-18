@@ -17,11 +17,66 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.juangilles123.monifly.ui.DashboardFragment"
-        android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="Inicio"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_addIncomeFragment"
+            app:destination="@id/addIncomeFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_analyticsFragment"
+            app:destination="@id/analyticsFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/analyticsFragment2"
-        android:name="com.juangilles123.monifly.AnalyticsFragment"
+        android:name="com.juangilles123.monifly.ui.AnalyticsFragment"
         android:label="fragment_analytics"
         tools:layout="@layout/fragment_analytics" />
+
+    <fragment
+        android:id="@+id/addIncomeFragment"
+        android:name="com.juangilles123.monifly.ui.AddIncomeFragment"
+        android:label="Añadir Ingreso"
+        tools:layout="@layout/fragment_add_income" />
+
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.juangilles123.monifly.ui.AddExpenseFragment"
+        android:label="Añadir Gasto"
+        tools:layout="@layout/fragment_add_expense" />
+
+    <fragment
+        android:id="@+id/debtsFragment"
+        android:name="com.juangilles123.monifly.DebtsFragment"
+        android:label="Deudas"
+        tools:layout="@layout/fragment_debts" >
+        <action
+            android:id="@+id/action_debtsFragment_to_addDebtFragment"
+            app:destination="@id/addDebtFragment">
+            <argument
+                android:name="debtId"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="@null" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/addDebtFragment"
+        android:name="com.juangilles123.monifly.AddDebtFragment"
+        android:label="Añadir Deuda"
+        tools:layout="@layout/fragment_add_debt">
+        <argument
+            android:name="debtTypeArg"
+            app:argType="com.juangilles123.monifly.data.model.DebtType"
+            app:nullable="false" />
+        <argument
+            android:name="debtId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
 </navigation>

@@ -1,5 +1,54 @@
 <resources>
     <string name="app_name">Monifly</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="login_welcome_message">Bienvenido a Monifly</string>
+    <string name="login_email_hint">Correo Electrónico</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_button_text">Iniciar Sesión</string>
+    <string name="login_no_account_text">¿No tienes una cuenta?</string>
+    <string name="login_register_button_text">Regístrate</string>
+    <string name="login_error_message">Error al iniciar sesión. Verifica tus credenciales.</string>
+    <string name="login_success_message">Inicio de sesión exitoso</string>
+    <string name="login_invalid_email_message">Formato de correo inválido.</string>
+    <string name="login_empty_fields_message">Por favor, completa todos los campos.</string>
+    <string name="login_generic_error">Ocurrió un error inesperado.</string>
+
+
+    <string name="register_title">Crear Cuenta</string>
+    <string name="register_name_hint">Nombre</string>
+    <string name="register_email_hint">Correo Electrónico</string>
+    <string name="register_password_hint">Contraseña</string>
+    <string name="register_confirm_password_hint">Confirmar Contraseña</string>
+    <string name="register_button_text">Registrarse</string>
+    <string name="register_already_account_text">¿Ya tienes una cuenta?</string>
+    <string name="register_login_button_text">Inicia Sesión</string>
+    <string name="register_passwords_do_not_match">Las contraseñas no coinciden.</string>
+    <string name="register_registration_successful">Registro exitoso</string>
+    <string name="register_registration_failed">Error en el registro: %1$s</string>
+    <string name="register_generic_error">Ocurrió un error inesperado durante el registro.</string>
+    <string name="register_invalid_email">Por favor, introduce un correo electrónico válido.</string>
+    <string name="register_empty_fields">Por favor, completa todos los campos.</string>
+    <string name="register_password_length">La contraseña debe tener al menos 6 caracteres.</string>
+
+    <string name="dashboard_streak_emoji" translatable="false">🔥</string>
+    <string name="dashboard_streak_days_placeholder" translatable="false">Racha: %1$d días</string>
+    <string name="dashboard_button_add_income">Añadir Ingreso</string>
+    <string name="dashboard_button_add_expense">Añadir Gasto</string>
+    <string name="dashboard_balance_title">Balance</string>
+    <string name="dashboard_balance_amount_placeholder" translatable="false">$0.00</string>
+    <string name="dashboard_total_balance_title">Balance Total</string>
+    <string name="dashboard_tab_day">Día</string>
+    <string name="dashboard_tab_week">Sem</string>
+    <string name="dashboard_tab_month">Mes</string>
+    <string name="dashboard_history_title">Historial</string>
+
+    <!-- Strings para validación en AddExpenseFragment -->
+    <string name="error_amount_required">El monto es obligatorio</string>
+    <string name="error_invalid_amount">Monto inválido</string>
+    <string name="error_category_required">La categoría es obligatoria</string>
+    <string name="error_date_required">La fecha es obligatoria</string>
+    <string name="expense_saved_successfully">Gasto guardado exitosamente</string>
+
+    <!-- Cadena faltante para AnalyticsFragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

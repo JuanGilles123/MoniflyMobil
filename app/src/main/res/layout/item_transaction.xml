@@ -17,19 +17,21 @@
             android:id="@+id/iconType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_downward"
+            android:src="@drawable/ic_arrow_downward" 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@android:color/holo_red_dark"/>
+            app:tint="@android:color/holo_red_dark" 
+            android:contentDescription="Icono de tipo de transacción" />
 
         <TextView
             android:id="@+id/textDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/textAmount"
+            app:layout_constraintEnd_toStartOf="@id/textAmount" 
             app:layout_constraintStart_toEndOf="@id/iconType"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Cafe con novia" />
@@ -40,18 +42,44 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/textDescription"
             app:layout_constraintTop_toBottomOf="@id/textDescription"
+            app:layout_constraintEnd_toEndOf="@id/textDescription"
             tools:text="Comida" />
+
+        <TextView
+            android:id="@+id/textTransactionDate" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="@id/textCategory"
+            app:layout_constraintTop_toBottomOf="@id/textCategory"
+            app:layout_constraintEnd_toEndOf="@id/textCategory"
+            tools:text="17 Sep" />
 
         <TextView
             android:id="@+id/textAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:textColor="@android:color/holo_red_dark"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonDeleteTransaction" 
             app:layout_constraintTop_toTopOf="parent"
             tools:text="$ 20.000" />
+
+        <ImageButton
+            android:id="@+id/buttonDeleteTransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar transacción"
+            app:tint="@color/design_default_color_error" 
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
