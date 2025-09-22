@@ -99,4 +99,16 @@
     <color name="transaction_expense_card_stroke">#C62828</color>     <!-- Borde rojo - Gastos -->
     <color name="transaction_income_card_background">#C8E6C9</color>  <!-- Fondo verde claro - Ingresos -->
     <color name="transaction_expense_card_background">#FFCDD2</color> <!-- Fondo rojo claro - Gastos -->
+    
+    <!-- Colores para diseño mejorado de Goals -->
+    <color name="primary_blue">#1565C0</color>                        <!-- Azul primario para metas -->
+    <color name="primary_blue_light">#E3F2FD</color>                  <!-- Azul claro para fondos -->
+    <color name="success">#2E7D32</color>                             <!-- Verde para completado -->
+    <color name="success_light">#E8F5E8</color>                       <!-- Verde claro para fondos -->
+    <color name="purple_border">#7B1FA2</color>                       <!-- Morado para progreso -->
+    <color name="purple_light_background">#F3E5F5</color>             <!-- Morado claro para fondos -->
+    <color name="progress_background">#F8F9FA</color>                 <!-- Fondo sección progreso -->
+    <color name="progress_background_tint">#E0E0E0</color>            <!-- Tinte fondo barra progreso -->
+    <color name="delete_red_light">#FFEBEE</color>                    <!-- Rojo claro para botones -->
+    <color name="surface">#FFFFFF</color>                             <!-- Color superficie principal -->
 </resources>

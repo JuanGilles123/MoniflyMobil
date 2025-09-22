@@ -87,4 +87,24 @@
     <color name="card_stroke">#424242</color>              <!-- Borde neutro -->
     <color name="debt_text_on_red_background">#FFFFFF</color>   <!-- Texto blanco sobre fondo rojo -->
     <color name="debt_text_on_green_background">#FFFFFF</color> <!-- Texto blanco sobre fondo verde -->
+    
+    <!-- Colores adicionales para Goals - Modo Oscuro -->
+    <color name="primary_blue">#64B5F6</color>                        <!-- Azul primario brillante para metas -->
+    <color name="primary_blue_light">#1A1A2E</color>                  <!-- Azul muy oscuro para fondos -->
+    <color name="success">#66BB6A</color>                             <!-- Verde brillante para completado -->
+    <color name="success_light">#1B2E1B</color>                       <!-- Verde muy oscuro para fondos -->
+    <color name="purple_border">#BA68C8</color>                       <!-- Morado brillante para progreso -->
+    <color name="purple_light_background">#2E1B2E</color>             <!-- Morado muy oscuro para fondos -->
+    <color name="progress_background">#1E1E1E</color>                 <!-- Fondo sección progreso oscuro -->
+    <color name="progress_background_tint">#424242</color>            <!-- Tinte fondo barra progreso oscuro -->
+    <color name="delete_red_light">#2E1B1B</color>                    <!-- Rojo muy oscuro para botones -->
+    <color name="surface">#1E1E1E</color>                             <!-- Color superficie principal oscuro -->
+    <color name="due_date_text">#FFB74D</color>                       <!-- Texto fecha vencimiento brillante -->
+    <color name="action_button_background">#2C2C2C</color>            <!-- Fondo botón acción oscuro -->
+    <color name="action_button_stroke">#424242</color>                <!-- Borde botón acción oscuro -->
+    <color name="chip_unselected_background">#2C2C2C</color>          <!-- Fondo oscuro para chips no seleccionados -->
+    <color name="income_light_background">#1B2E1B</color>             <!-- Fondo claro ingresos muy oscuro -->
+    <color name="expense_light_background">#2E1B1B</color>            <!-- Fondo claro gastos muy oscuro -->
+    <color name="primary_light_background">#1A1A2E</color>            <!-- Fondo claro primario muy oscuro -->
+    <color name="monifly_gradient_light">#1B2E1B</color>              <!-- Verde gradiente muy oscuro -->
 </resources>

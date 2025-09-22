@@ -73,27 +73,6 @@ class GoalsAdapter(
                         ContextCompat.getColor(binding.root.context, R.color.debt_status_text)
                     )
                 }
-                
-                // Category icon
-                val categoryIcon = when (goal.category?.lowercase()) {
-                    "tecnología" -> R.drawable.ic_phone
-                    "viajes" -> R.drawable.ic_travel
-                    "educación" -> R.drawable.ic_education
-                    "seguridad" -> R.drawable.ic_security
-                    else -> R.drawable.ic_goals
-                }
-                
-                try {
-                    binding.iconGoalCategory.setImageResource(categoryIcon)
-                    binding.iconGoalCategory.setColorFilter(
-                        ContextCompat.getColor(binding.root.context, R.color.monifly_primary)
-                    )
-                } catch (e: Exception) {
-                    binding.iconGoalCategory.setImageResource(R.drawable.ic_goals)
-                    binding.iconGoalCategory.setColorFilter(
-                        ContextCompat.getColor(binding.root.context, R.color.text_secondary)
-                    )
-                }
 
                 // Listeners
                 // Remove click listener from card so only edit button triggers edit mode

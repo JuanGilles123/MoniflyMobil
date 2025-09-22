@@ -29,4 +29,12 @@
         <item name="boxCornerRadiusBottomEnd">12dp</item>
     </style>
 
+    <!-- Estilo para el indicador activo del BottomNavigationView -->
+    <style name="App.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/primary_blue_light</item>
+        <item name="android:width">64dp</item>
+        <item name="android:height">32dp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
 </resources>

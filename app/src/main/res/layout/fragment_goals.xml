@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".ui.GoalsFragment">
+    android:background="@color/background">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshGoals"
@@ -22,56 +21,92 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Header -->
-                <TextView
-                    android:id="@+id/textViewGoalsTitle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mis Metas"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    android:layout_marginTop="8dp" />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center">
 
-                <!-- Stats Card -->
-                <com.google.android.material.card.MaterialCardView
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="4dp">
+
+                        <TextView
+                            android:id="@+id/textViewGoalsTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mis Metas"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.02" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🎯"
+                            android:textSize="28sp"
+                            android:layout_marginStart="8dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Convierte tus sueños en realidad"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"
+                        android:fontFamily="sans-serif-light" />
+
+                </LinearLayout>
+
+                <!-- Stats Container -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="@color/card_background">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
+                    <!-- Stats Cards -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="20dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
 
-                        <!-- Goals Summary -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <!-- Total Goals Card -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="16dp">
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="4dp"
+                            app:strokeWidth="2dp"
+                            app:strokeColor="@color/primary_blue">
 
-                            <!-- Total Goals -->
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:orientation="vertical"
+                                android:padding="16dp"
                                 android:gravity="center">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Total Metas"
+                                    android:text="📊 Total Metas"
                                     android:textSize="12sp"
-                                    android:textColor="@color/text_secondary" />
+                                    android:textColor="@color/text_secondary"
+                                    android:fontFamily="sans-serif" />
 
                                 <TextView
                                     android:id="@+id/textViewTotalGoals"
@@ -80,25 +115,38 @@
                                     android:text="0"
                                     android:textSize="24sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/monifly_primary"
-                                    tools:text="4" />
+                                    android:textColor="@color/primary_blue"
+                                    android:fontFamily="sans-serif-medium" />
 
                             </LinearLayout>
 
-                            <!-- Completed Goals -->
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Completed Goals Card -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="4dp"
+                            app:strokeWidth="2dp"
+                            app:strokeColor="@color/success">
+
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:orientation="vertical"
+                                android:padding="16dp"
                                 android:gravity="center">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Completadas"
+                                    android:text="✅ Completadas"
                                     android:textSize="12sp"
-                                    android:textColor="@color/text_secondary" />
+                                    android:textColor="@color/text_secondary"
+                                    android:fontFamily="sans-serif" />
 
                                 <TextView
                                     android:id="@+id/textViewCompletedGoals"
@@ -107,103 +155,146 @@
                                     android:text="0"
                                     android:textSize="24sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/income_green"
-                                    tools:text="1" />
+                                    android:textColor="@color/success"
+                                    android:fontFamily="sans-serif-medium" />
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                        <!-- Amounts Summary -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                    </LinearLayout>
+
+                    <!-- Target and Saved Amount Cards -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <!-- Total Target Card -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="16dp">
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="4dp"
+                            app:strokeWidth="2dp"
+                            app:strokeColor="@color/purple_border">
 
-                            <!-- Total Target -->
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="16dp"
+                                android:gravity="center">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Meta Total"
+                                    android:text="🎯 Meta Total"
                                     android:textSize="12sp"
-                                    android:textColor="@color/text_secondary" />
+                                    android:textColor="@color/text_secondary"
+                                    android:fontFamily="sans-serif" />
 
                                 <TextView
                                     android:id="@+id/textViewTotalTarget"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="$0"
-                                    android:textSize="16sp"
+                                    android:textSize="18sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/expense_red"
-                                    tools:text="$26.000.000" />
+                                    android:textColor="@color/purple_border"
+                                    android:fontFamily="sans-serif-medium" />
 
                             </LinearLayout>
 
-                            <!-- Total Saved -->
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Total Saved Card -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="4dp"
+                            app:strokeWidth="2dp"
+                            app:strokeColor="@color/success">
+
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="16dp"
+                                android:gravity="center">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Ahorrado"
+                                    android:text="💰 Ahorrado"
                                     android:textSize="12sp"
-                                    android:textColor="@color/text_secondary" />
+                                    android:textColor="@color/text_secondary"
+                                    android:fontFamily="sans-serif" />
 
                                 <TextView
                                     android:id="@+id/textViewTotalSaved"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="$0"
-                                    android:textSize="16sp"
+                                    android:textSize="18sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/income_green"
-                                    tools:text="$16.500.000" />
+                                    android:textColor="@color/success"
+                                    android:fontFamily="sans-serif-medium" />
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                        <!-- Overall Progress -->
+                    </LinearLayout>
+
+                    <!-- Overall Progress Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="4dp"
+                        app:strokeWidth="2dp"
+                        app:strokeColor="@color/primary_blue">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="16dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
+                                android:gravity="center_vertical"
                                 android:layout_marginBottom="8dp">
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Progreso General"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/text_secondary" />
+                                    android:text="📈 Progreso General"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/primary_blue"
+                                    android:fontFamily="sans-serif-medium" />
 
                                 <TextView
                                     android:id="@+id/textViewOverallProgress"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0%"
-                                    android:textSize="14sp"
+                                    android:textSize="18sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/monifly_primary"
-                                    tools:text="63%" />
+                                    android:textColor="@color/success"
+                                    android:fontFamily="sans-serif-medium" />
 
                             </LinearLayout>
 
@@ -213,45 +304,49 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="8dp"
                                 android:progress="0"
-                                android:progressTint="@color/monifly_primary"
-                                android:progressBackgroundTint="@color/text_tertiary"
-                                android:max="100"
-                                tools:progress="63" />
+                                android:progressTint="@color/success"
+                                android:progressBackgroundTint="@color/surface" />
 
                         </LinearLayout>
 
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <!-- Goals List -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewGoals"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:clipToPadding="false"
-                    android:paddingBottom="80dp"
-                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_goal" />
+                    <!-- Goals List -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewGoals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:clipToPadding="false"
+                        android:paddingBottom="80dp"
+                        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_goal" />
+
+                </LinearLayout>
 
             </LinearLayout>
+
         </androidx.core.widget.NestedScrollView>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabAddGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:text="Nueva Meta"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
         app:icon="@drawable/ic_add"
-        app:iconTint="@color/white"
-        app:backgroundTint="@color/monifly_primary"
+        app:iconTint="@android:color/white"
+        app:iconSize="20dp"
+        app:backgroundTint="@color/success"
         app:cornerRadius="28dp"
-        android:contentDescription="Añadir nueva meta" />
+        app:elevation="8dp"
+        android:contentDescription="A?adir nueva meta" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
