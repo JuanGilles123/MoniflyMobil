@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Lista de deudas que me deben -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTheyOwe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        android:scrollbarStyle="outsideOverlay"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>

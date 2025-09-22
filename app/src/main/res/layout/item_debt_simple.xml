@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/card_background"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/debt_card_stroke">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Icono simplificado -->
+        <ImageView
+            android:id="@+id/iconDebtType"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_person"
+            app:tint="@color/debt_orange"
+            android:contentDescription="Tipo de deuda"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Descripción de la deuda -->
+        <TextView
+            android:id="@+id/textViewDebtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/iconDebtType"
+            app:layout_constraintTop_toTopOf="@id/iconDebtType"
+            app:layout_constraintEnd_toStartOf="@+id/textViewDebtAmount"
+            tools:text="Compra de teclado mecánico para el setup gaming" />
+
+        <!-- Persona asociada -->
+        <TextView
+            android:id="@+id/textViewDebtPerson"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@id/textViewDebtDescription"
+            app:layout_constraintTop_toBottomOf="@id/textViewDebtDescription"
+            app:layout_constraintEnd_toStartOf="@+id/textViewDebtAmount"
+            tools:text="A: Juan Alberto Pérez" />
+
+        <!-- Monto de la deuda -->
+        <TextView
+            android:id="@+id/textViewDebtAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/debt_amount_color"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintEnd_toStartOf="@+id/chipDebtStatus"
+            app:layout_constraintTop_toTopOf="@id/iconDebtType"
+            android:layout_marginEnd="8dp"
+            tools:text="$150.000" />
+
+        <!-- Estado de la deuda -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipDebtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pendiente"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/debt_status_text"
+            app:chipBackgroundColor="@color/debt_status_background"
+            app:chipStrokeWidth="0dp"
+            app:chipMinHeight="28dp"
+            app:chipStartPadding="8dp"
+            app:chipEndPadding="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/actionButton"
+            app:layout_constraintTop_toTopOf="@id/iconDebtType"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Botón de acción -->
+        <ImageButton
+            android:id="@+id/actionButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert"
+            app:tint="@color/text_secondary"
+            android:contentDescription="Más opciones"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iconDebtType"
+            app:layout_constraintBottom_toBottomOf="@id/iconDebtType" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

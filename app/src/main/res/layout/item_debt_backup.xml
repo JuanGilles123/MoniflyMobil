@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/card_background"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/debt_card_stroke">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- Indicador de tipo de deuda con gradiente -->
+        <LinearLayout
+            android:id="@+id/debtTypeIndicator"
+            android:layout_width="6dp"
+            android:layout_height="0dp"
+            android:background="@drawable/debt_type_indicator_gradient"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Container del icono con sombra y gradiente -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iconContainer"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/debt_icon_background"
+            app:layout_constraintStart_toEndOf="@id/debtTypeIndicator"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iconDebtType"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person"
+                app:tint="@color/debt_orange"
+                android:contentDescription="Tipo de deuda" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Header con descripción y estado -->
+        <LinearLayout
+            android:id="@+id/headerContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/iconContainer"
+            app:layout_constraintTop_toTopOf="@id/iconContainer"
+            app:layout_constraintEnd_toStartOf="@+id/amountContainer">
+
+            <!-- Descripción de la deuda -->
+            <TextView
+                android:id="@+id/textViewDebtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp"
+                tools:text="Compra de teclado mecánico para el setup gaming" />
+
+            <!-- Persona asociada con icono -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_person"
+                    app:tint="@color/text_secondary"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/textViewDebtPerson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Juan Alberto Pérez" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Container de monto y estado -->
+        <LinearLayout
+            android:id="@+id/amountContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end"
+            app:layout_constraintEnd_toStartOf="@+id/actionButton"
+            app:layout_constraintTop_toTopOf="@id/iconContainer">
+
+            <!-- Monto de la deuda -->
+            <TextView
+                android:id="@+id/textViewDebtAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/debt_amount_color"
+                android:fontFamily="sans-serif-medium"
+                tools:text="$150.000" />
+
+            <!-- Estado de la deuda con nuevo estilo -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDebtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Activo"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/debt_status_text"
+                app:chipBackgroundColor="@color/debt_status_background"
+                app:chipStrokeWidth="0dp"
+                app:chipMinHeight="24dp"
+                app:chipStartPadding="8dp"
+                app:chipEndPadding="8dp" />
+
+        </LinearLayout>
+
+        <!-- Fecha de vencimiento con mejor estilo -->
+        <LinearLayout
+            android:id="@+id/dueDateContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:background="@drawable/due_date_background"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/headerContainer"
+            app:layout_constraintTop_toBottomOf="@id/headerContainer"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_calendar"
+                app:tint="@color/debt_due_date_text"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/textViewDueDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/debt_due_date_text"
+                tools:text="Vence: 25 Oct 2024" />
+
+        </LinearLayout>
+
+        <!-- Información adicional de forma de pago -->
+        <LinearLayout
+            android:id="@+id/paymentTypeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/headerContainer"
+            app:layout_constraintTop_toBottomOf="@id/dueDateContainer"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_money"
+                app:tint="@color/text_tertiary"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/textViewPaymentType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/text_tertiary"
+                tools:text="Pago único" />
+
+        </LinearLayout>
+
+        <!-- Botón de acción mejorado -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/actionButton"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            app:icon="@drawable/ic_more_vert"
+            app:iconTint="@color/text_secondary"
+            app:iconSize="20dp"
+            app:backgroundTint="@color/debt_action_button_background"
+            app:cornerRadius="22dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/debt_action_button_stroke"
+            android:contentDescription="Más opciones"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iconContainer"
+            app:layout_constraintBottom_toBottomOf="@id/iconContainer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
