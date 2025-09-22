@@ -90,4 +90,7 @@ dependencies {
 
     // SLF4J binding for Android (Ktor logging)
     implementation("org.slf4j:slf4j-android:1.7.36")
+    
+    // Charts library for analytics
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }

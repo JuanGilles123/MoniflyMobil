@@ -4,4 +4,99 @@
     <color name="white">#FFFFFFFF</color>
     <color name="teal_500">#26A69A</color>
     <color name="text_disabled">#808080</color>
+    
+    <!-- Colores principales MoniflyMobil -->
+    <color name="monifly_primary">#2E7D32</color>           <!-- Verde más profesional -->
+    <color name="monifly_primary_light">#4CAF50</color>     <!-- Verde claro -->
+    <color name="monifly_secondary">#1565C0</color>         <!-- Azul más profundo -->
+    <color name="monifly_secondary_light">#42A5F5</color>   <!-- Azul claro -->
+    <color name="monifly_accent">#E65100</color>            <!-- Naranja más elegante -->
+    <color name="monifly_accent_light">#FF9800</color>      <!-- Naranja claro -->
+    
+    <!-- Colores para transacciones -->
+    <color name="income_green">#2E7D32</color>              <!-- Verde ingresos -->
+    <color name="income_green_light">#E8F5E8</color>        <!-- Verde ingresos claro -->
+    <color name="expense_red">#C62828</color>               <!-- Rojo gastos -->
+    <color name="expense_red_light">#FFEBEE</color>         <!-- Rojo gastos claro -->
+    <color name="debt_orange">#E65100</color>               <!-- Naranja deudas -->
+    <color name="debt_orange_light">#FFF3E0</color>         <!-- Naranja deudas claro -->
+    <color name="balance_blue">#1565C0</color>              <!-- Azul balance -->
+    <color name="balance_blue_light">#E3F2FD</color>        <!-- Azul balance claro -->
+    
+    <!-- Colores para SwipeRefresh -->
+    <color name="swipe_refresh_primary">#2E7D32</color>     
+    <color name="swipe_refresh_secondary">#1565C0</color>   
+    <color name="swipe_refresh_accent">#E65100</color>      
+    
+    <!-- Colores para UI estados - Modo Claro -->
+    <color name="skeleton_background">#F5F5F5</color>       
+    <color name="skeleton_shimmer">#E0E0E0</color>          
+    <color name="empty_state_text">#757575</color>          
+    <color name="card_background">#FFFFFF</color>           
+    <color name="surface_variant">#F8F9FA</color>           
+    <color name="on_surface_primary">#212121</color>        
+    <color name="on_surface_secondary">#616161</color>      
+    
+    <!-- Gradientes para tarjetas -->
+    <color name="gradient_start_light">#2E7D32</color>      <!-- Verde principal -->
+    <color name="gradient_middle_light">#388E3C</color>     <!-- Verde medio -->
+    <color name="gradient_end_light">#1565C0</color>        <!-- Azul final -->
+    <color name="monifly_gradient_light">#E8F8F5</color>    <!-- Verde gradiente claro -->
+    
+    <!-- Colores para estados de transacciones -->
+    <color name="transaction_positive">#2E7D32</color>      
+    <color name="transaction_negative">#C62828</color>      
+    <color name="transaction_neutral">#616161</color>       
+    
+    <!-- Colores adicionales para UI -->
+    <color name="background">#FFFFFF</color>               <!-- Fondo principal -->
+    <color name="text_primary">#212121</color>             <!-- Texto principal -->
+    <color name="text_secondary">#757575</color>           <!-- Texto secundario -->
+    <color name="text_tertiary">#9E9E9E</color>            <!-- Texto terciario -->
+    <color name="icon_background">#F5F5F5</color>          <!-- Fondo iconos -->
+    <color name="delete_red">#D32F2F</color>               <!-- Rojo eliminar -->
+    <color name="chip_unselected_background">#F5F5F5</color> <!-- Fondo claro para chips no seleccionados -->
+    
+    <!-- Colores específicos para item_debt.xml -->
+    <color name="card_stroke">#E0E0E0</color>               <!-- Borde de tarjeta -->
+    <color name="debt_card_stroke">#E0E0E0</color>          <!-- Borde de tarjeta deuda -->
+    <color name="debt_icon_background">#FFF3E0</color>      <!-- Fondo icono deuda -->
+    <color name="debt_amount_color">#E65100</color>         <!-- Color monto deuda -->
+    <color name="debt_status_text">#FFFFFF</color>          <!-- Texto estado deuda -->
+    <color name="debt_status_background">#4CAF50</color>    <!-- Fondo estado deuda -->
+    <color name="due_date_text">#FF5722</color>             <!-- Texto fecha vencimiento -->
+    <color name="action_button_background">#F8F9FA</color>  <!-- Fondo botón acción -->
+    <color name="action_button_stroke">#E0E0E0</color>      <!-- Borde botón acción -->
+    
+    <!-- Colores para layouts de Analytics, Goals y Profile -->
+    <color name="income_light_background">#E8F5E8</color>   <!-- Fondo claro ingresos -->
+    <color name="expense_light_background">#FFEBEE</color>  <!-- Fondo claro gastos -->
+    <color name="primary_light_background">#E3F2FD</color>  <!-- Fondo claro primario -->
+    
+    <!-- Colores adicionales faltantes -->
+    <color name="debt_due_date_text">#FF5722</color>        <!-- Texto fecha vencimiento -->
+    <color name="debt_action_button_background">#F8F9FA</color> <!-- Fondo botón acción -->
+    <color name="debt_action_button_stroke">#E0E0E0</color> <!-- Borde botón acción -->
+    
+    <!-- Colores para insights -->
+    <color name="insight_low_background">#F8F9FA</color>     <!-- Fondo insight bajo -->
+    <color name="insight_low_text">#616161</color>          <!-- Texto insight bajo -->
+    <color name="insight_medium_background">#E3F2FD</color> <!-- Fondo insight medio -->
+    <color name="insight_medium_text">#1565C0</color>       <!-- Texto insight medio -->
+    <color name="insight_high_background">#FFF3E0</color>   <!-- Fondo insight alto -->
+    <color name="insight_high_text">#E65100</color>         <!-- Texto insight alto -->
+    <color name="insight_critical_background">#FFEBEE</color> <!-- Fondo insight crítico -->
+    <color name="insight_critical_text">#C62828</color>     <!-- Texto insight crítico -->
+    
+    <!-- Colores para tarjetas de deuda según tipo -->
+    <color name="debt_owe_card_stroke">#C62828</color>      <!-- Borde rojo - Yo debo -->
+    <color name="debt_owed_card_stroke">#2E7D32</color>     <!-- Borde verde - Me deben -->
+    <color name="debt_owe_card_background">#FFCDD2</color>  <!-- Fondo rojo más claro - Yo debo -->
+    <color name="debt_owed_card_background">#C8E6C9</color> <!-- Fondo verde más claro - Me deben -->
+    
+    <!-- Colores para tarjetas de transacciones según tipo -->
+    <color name="transaction_income_card_stroke">#2E7D32</color>      <!-- Borde verde - Ingresos -->
+    <color name="transaction_expense_card_stroke">#C62828</color>     <!-- Borde rojo - Gastos -->
+    <color name="transaction_income_card_background">#C8E6C9</color>  <!-- Fondo verde claro - Ingresos -->
+    <color name="transaction_expense_card_background">#FFCDD2</color> <!-- Fondo rojo claro - Gastos -->
 </resources>

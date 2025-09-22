@@ -4,81 +4,203 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingTop="20dp"
-    android:paddingBottom="8dp">
+    android:background="@color/background"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="24dp"
+    android:paddingBottom="16dp">
 
+    <!-- Header del diálogo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_debt_empty"
+            app:tint="@color/debt_orange"
+            android:layout_marginEnd="12dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Deuda"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selecciona qué tipo de deuda quieres registrar"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Opción: Yo Debo -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_option_i_owe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:cardElevation="4dp"
-        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/card_background"
         android:clickable="true"
         android:focusable="true"
-        app:rippleColor="?attr/colorPrimaryVariant"
+        app:rippleColor="@color/expense_red"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
+            android:padding="20dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/debt_owe_background">
 
-            <ImageView
-                android:id="@+id/icon_i_owe"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+            <!-- Container del icono -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_arrow_downward" 
-                app:tint="?attr/colorPrimary"
-                android:contentDescription="Opción: Yo Debo" />
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:strokeColor="@color/expense_red"
+                app:strokeWidth="2dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_downward" 
+                    app:tint="@color/expense_red" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Yo Debo\n(Registrar un pago pendiente)"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:lineSpacingMultiplier="1.2"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yo Debo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar un pago que debo realizar"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"
+                    android:lineSpacingMultiplier="1.2" />
+
+            </LinearLayout>
+
+            <!-- Indicador -->
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:tint="@color/text_tertiary" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Opción: Me Deben -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_option_they_owe_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="4dp"
-        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/card_background"
         android:clickable="true"
         android:focusable="true"
-        app:rippleColor="?attr/colorPrimaryVariant"
+        app:rippleColor="@color/income_green"
         android:foreground="?attr/selectableItemBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
-            android:gravity="center_vertical">
+            android:padding="20dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/debt_owed_background">
 
-            <ImageView
-                android:id="@+id/icon_they_owe_me"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+            <!-- Container del icono -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_arrow_upward" 
-                app:tint="?attr/colorError" 
-                android:contentDescription="Opción: Me Deben" />
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:strokeColor="@color/income_green"
+                app:strokeWidth="2dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_upward" 
+                    app:tint="@color/income_green" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Me Deben\n(Registrar un cobro pendiente)"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:lineSpacingMultiplier="1.2"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Me Deben"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar un cobro que debo recibir"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"
+                    android:lineSpacingMultiplier="1.2" />
+
+            </LinearLayout>
+
+            <!-- Indicador -->
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:tint="@color/text_tertiary" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>

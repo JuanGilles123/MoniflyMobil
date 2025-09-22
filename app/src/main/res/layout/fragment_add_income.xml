@@ -1,99 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.AddIncomeFragment">
+    android:background="@color/background"
+    tools:context=".ui.DashboardFragment">
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrar Nuevo Ingreso"
-        android:textAppearance="?attr/textAppearanceHeadlineSmall"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="gone" 
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:visibility="visible"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldAmount"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" 
-        app:layout_constraintTop_toBottomOf="@id/progressBar" 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Monto">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextAmount"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldDescription"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/textFieldAmount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Descripción (Opcional)">
+            <!-- Header Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapSentences" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/income_form_background"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldDate"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/textFieldDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:hint="Fecha (ej. DD/MM/AAAA)">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_arrow_upward"
+                        android:contentDescription="@string/income_icon_description"
+                        app:tint="@color/income_green" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:focusable="false"/> 
-    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/textViewAddIncomeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Registrar Nuevo Ingreso"
+                        android:textColor="@color/text_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/buttonSaveIncome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Guardar Ingreso"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp"
-        android:paddingVertical="12dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:text="Añade tus ingresos para mantener el control"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <!-- Form Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Campo Monto -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textFieldAmount"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Monto"
+                        app:startIconDrawable="@drawable/ic_attach_money"
+                        app:startIconTint="@color/income_green"
+                        app:boxStrokeColor="@color/income_green"
+                        app:hintTextColor="@color/income_green">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextAmount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Campo Descripción -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textFieldDescription"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Descripción (Opcional)"
+                        app:startIconDrawable="@drawable/ic_description"
+                        app:startIconTint="@color/income_green">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapSentences" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Categorías -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Categoría"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupIncomeCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:singleSelection="true"
+                        app:selectionRequired="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipSalary"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Salario"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipFreelance"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Freelance"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipSales"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ventas"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipInvestments"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Inversiones"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipBonus"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bonificación"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipOtherIncome"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Otros"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <!-- Cuenta/Método de Pago -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="¿A qué cuenta llegó?"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupIncomeAccounts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        app:singleSelection="true"
+                        app:selectionRequired="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipCash"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💵 Efectivo"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipDebitCard"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💳 Cuenta Principal (Débito)"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipTransfer"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🏦 Transferencia"
+                            android:textColor="@color/income_chip_text_color_selector"
+                            app:chipBackgroundColor="@color/income_chip_background_color_selector"
+                            app:chipStrokeColor="@color/income_green" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <!-- Campo Fecha -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textFieldDate"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Fecha"
+                        app:startIconDrawable="@drawable/ic_calendar"
+                        app:startIconTint="@color/income_green"
+                        app:boxStrokeColor="@color/income_green"
+                        app:hintTextColor="@color/income_green">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:inputType="date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Botones de Acción -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonCancel"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Cancelar"
+                    android:textColor="@color/text_secondary"
+                    app:strokeColor="@color/text_secondary"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSaveIncome"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="Guardar Ingreso"
+                    android:backgroundTint="@color/income_green"
+                    app:icon="@drawable/ic_arrow_upward"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/white"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

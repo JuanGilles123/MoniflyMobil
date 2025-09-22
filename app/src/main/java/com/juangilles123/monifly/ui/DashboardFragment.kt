@@ -7,21 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-// import androidx.core.content.ContextCompat // No longer strictly needed if observePeriodTotals is removed
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-// import androidx.lifecycle.Lifecycle // No longer strictly needed if observePeriodTotals is removed
 import androidx.lifecycle.ViewModelProvider
-// import androidx.lifecycle.lifecycleScope // No longer strictly needed if observePeriodTotals is removed
-// import androidx.lifecycle.repeatOnLifecycle // No longer strictly needed if observePeriodTotals is removed
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juangilles123.monifly.R
 import com.juangilles123.monifly.databinding.FragmentDashboardBinding
 import com.juangilles123.monifly.util.TransactionEventBus
-// import kotlinx.coroutines.launch // No longer strictly needed if observePeriodTotals is removed
-// import java.text.NumberFormat // No longer strictly needed if observePeriodTotals is removed
-// import java.util.Locale // No longer strictly needed if observePeriodTotals is removed
 
 class DashboardFragment : Fragment() {
 
@@ -44,8 +37,9 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupSwipeRefresh()
+        setupEmptyStateButtons()
         observeDashboardViewModel()
-        // Llamada a observePeriodTotals() eliminada
     }
 
     private fun setupRecyclerView() {
@@ -60,15 +54,40 @@ class DashboardFragment : Fragment() {
             onDeleteClicked = { transactionId, isExpense ->
                 showDeleteConfirmationDialog(transactionId, isExpense)
             },
-            onTimePeriodSelected = { selectedPeriod ->
-                Log.d("DashboardFragment", "Período seleccionado en UI: $selectedPeriod. Llamando a ViewModel.")
-                dashboardViewModel.setTimePeriod(selectedPeriod)
+            onEditClicked = { transactionId, isExpense ->
+                editTransaction(transactionId, isExpense)
             }
         )
         
         binding.transactionsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = transactionAdapter
+        }
+    }
+
+    private fun setupSwipeRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            Log.d("DashboardFragment", "SwipeRefresh triggered - reloading data")
+            dashboardViewModel.loadDashboardData()
+        }
+        
+        // Configurar colores personalizados del SwipeRefresh para MoniflyMobil
+        binding.swipeRefreshLayout.setColorSchemeResources(
+            R.color.swipe_refresh_primary,      // Verde dinero
+            R.color.swipe_refresh_secondary,    // Azul confianza
+            R.color.swipe_refresh_accent        // Naranja energía
+        )
+    }
+
+    private fun setupEmptyStateButtons() {
+        // Botones del estado vacío
+        val emptyStateView = binding.emptyStateLayout.root
+        emptyStateView.findViewById<View>(R.id.buttonAddIncomeEmpty)?.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_addIncomeFragment)
+        }
+        
+        emptyStateView.findViewById<View>(R.id.buttonAddExpenseEmpty)?.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboardFragment_to_addExpenseFragment)
         }
     }
 
@@ -83,23 +102,55 @@ class DashboardFragment : Fragment() {
             .show()
     }
 
+    private fun editTransaction(transactionId: String, isExpense: Boolean) {
+        if (isExpense) {
+            // Navegar al fragmento de editar gasto
+            val bundle = Bundle().apply {
+                putString("transactionId", transactionId)
+            }
+            findNavController().navigate(R.id.action_dashboardFragment_to_addExpenseFragment, bundle)
+        } else {
+            // Navegar al fragmento de editar ingreso
+            val bundle = Bundle().apply {
+                putString("transactionId", transactionId)
+            }
+            findNavController().navigate(R.id.action_dashboardFragment_to_addIncomeFragment, bundle)
+        }
+    }
+
     private fun observeDashboardViewModel() {
         dashboardViewModel.dashboardItems.observe(viewLifecycleOwner) { dashboardItems ->
             Log.d("DashboardFragment", "Actualizando lista de ítems del dashboard: ${dashboardItems.size}")
             transactionAdapter.submitList(dashboardItems)
+            
+            // Mostrar/ocultar estado vacío basado en si hay transacciones
+            val hasTransactions = dashboardItems.size > 1 // >1 porque incluye el header
+            showEmptyState(!hasTransactions)
         }
 
         dashboardViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             Log.d("DashboardFragment", "Estado de carga: $isLoading")
-            val isEmptyOrJustHeader = transactionAdapter.itemCount <= 1
-            binding.progressBar.isVisible = isLoading && isEmptyOrJustHeader
+            
+            // Ocultar SwipeRefresh si está activo
+            binding.swipeRefreshLayout.isRefreshing = false
+            
+            // Mostrar/ocultar loading inicial solo si no hay datos con animación
+            val hasData = transactionAdapter.itemCount > 0
+            if (isLoading && !hasData) {
+                animateProgressBar(true)
+            } else {
+                animateProgressBar(false)
+            }
         }
 
         dashboardViewModel.error.observe(viewLifecycleOwner) { errorMessage ->
             errorMessage?.let {
                 Log.e("DashboardFragment", "Error recibido: $it")
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-                binding.progressBar.isVisible = false
+                
+                // Ocultar SwipeRefresh en caso de error
+                binding.swipeRefreshLayout.isRefreshing = false
+                animateProgressBar(false)
             }
         }
 
@@ -112,15 +163,35 @@ class DashboardFragment : Fragment() {
             }
         }
 
-        TransactionEventBus.refreshRequest.observe(viewLifecycleOwner) { refresh ->
-            if (refresh == true) {
+        TransactionEventBus.refreshRequest.observe(viewLifecycleOwner) { timestamp ->
+            if (timestamp != null) {
                 Log.d("DashboardFragment", "Refresh request recibido. Llamando a viewModel.loadDashboardData()")
                 dashboardViewModel.loadDashboardData()
             }
         }
     }
 
-    // Función observePeriodTotals() eliminada completamente
+    private fun showEmptyState(show: Boolean) {
+        if (show) {
+            // Mostrar estado vacío
+            binding.swipeRefreshLayout.isVisible = false
+            binding.emptyStateLayout.root.isVisible = true
+        } else {
+            // Ocultar estado vacío y mostrar contenido
+            binding.emptyStateLayout.root.isVisible = false
+            binding.swipeRefreshLayout.isVisible = true
+        }
+        
+        Log.d("DashboardFragment", "Mostrando estado vacío: $show")
+    }
+
+    private fun animateProgressBar(show: Boolean) {
+        if (show) {
+            binding.progressBar.isVisible = true
+        } else {
+            binding.progressBar.isVisible = false
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

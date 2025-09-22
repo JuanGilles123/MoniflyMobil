@@ -47,6 +47,16 @@
     <string name="error_category_required">La categoría es obligatoria</string>
     <string name="error_date_required">La fecha es obligatoria</string>
     <string name="expense_saved_successfully">Gasto guardado exitosamente</string>
+    <string name="expense_icon_description">Icono de gasto</string>
+    <string name="income_icon_description">Icono de ingreso</string>
+
+    <!-- Strings para la pantalla de deudas -->
+    <string name="debts_available_money">Dinero Disponible</string>
+    <string name="debts_available_money_desc">Tu dinero real disponible (incluye pagos de deudas)</string>
+    <string name="debts_balance_title">Balance en Deudas</string>
+    <string name="debts_balance_desc">Diferencia entre lo que te deben y lo que debes</string>
+    <string name="debts_total_wealth">Patrimonio Total</string>
+    <string name="debts_total_wealth_desc">Tu patrimonio real (no cambia al pagar deudas)</string>
 
     <!-- Cadena faltante para AnalyticsFragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

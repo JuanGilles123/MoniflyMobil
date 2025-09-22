@@ -2,7 +2,7 @@ package com.juangilles123.monifly.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.juangilles123.monifly.data.repository.SupabaseTransactionRepository
+import com.juangilles123.monifly.data.repository.TransactionRepositoryImpl
 import com.juangilles123.monifly.data.repository.TransactionRepository
 
 class DashboardViewModelFactory : ViewModelProvider.Factory {
@@ -11,7 +11,7 @@ class DashboardViewModelFactory : ViewModelProvider.Factory {
     // pero para este caso, lo crearemos aquí directamente.
     // En una app más grande, usarías Inyección de Dependencias (Hilt, Koin).
     private val transactionRepository: TransactionRepository by lazy {
-        SupabaseTransactionRepository()
+        TransactionRepositoryImpl()
     }
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

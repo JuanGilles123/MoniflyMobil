@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 object TransactionEventBus {
-    private val _refreshRequest = MutableLiveData<Boolean>()
-    val refreshRequest: LiveData<Boolean> = _refreshRequest
+    private val _refreshRequest = MutableLiveData<Long>()
+    val refreshRequest: LiveData<Long> = _refreshRequest
 
     fun postRefreshRequest() {
-        _refreshRequest.value = true // O _refreshRequest.postValue(true) si se llama desde un hilo de fondo
+        val timestamp = System.currentTimeMillis()
+        android.util.Log.d("TransactionEventBus", "Enviando refresh request: $timestamp")
+        _refreshRequest.postValue(timestamp) // Usar postValue para llamadas desde hilos de fondo
     }
 }

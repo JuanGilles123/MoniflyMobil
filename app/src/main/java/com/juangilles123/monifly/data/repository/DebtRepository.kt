@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 object DebtRepository {
 
     private val supabaseClient = SupabaseManager.client
-    private const val TABLE_NAME = "debtss"
+    private const val TABLE_NAME = "debts"
 
     private val _debts = MutableStateFlow<List<Debt>>(emptyList())
     val debts: Flow<List<Debt>> = _debts.asStateFlow()

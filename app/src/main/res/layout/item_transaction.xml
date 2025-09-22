@@ -2,84 +2,134 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transactionCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="4dp"
-    app:cardCornerRadius="12dp">
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="2dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/iconType"
-            android:layout_width="wrap_content"
+        <!-- Fila principal con descripción y monto -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_downward" 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@android:color/holo_red_dark" 
-            android:contentDescription="Icono de tipo de transacción" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
 
-        <TextView
-            android:id="@+id/textDescription"
-            android:layout_width="0dp"
+            <!-- Ícono de flecha para tipo de transacción -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/iconContainer"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                android:layout_marginEnd="12dp">
+
+                <ImageView
+                    android:id="@+id/iconType"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_upward"
+                    android:contentDescription="Tipo de transacción" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Descripción de la transacción -->
+            <TextView
+                android:id="@+id/textDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginEnd="16dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Mom" />
+
+            <!-- Monto de la transacción -->
+            <TextView
+                android:id="@+id/textAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="+ $50.000,00" />
+
+        </LinearLayout>
+
+        <!-- Fila con categoría, fecha y botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/textAmount" 
-            app:layout_constraintStart_toEndOf="@id/iconType"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Cafe con novia" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/textCategory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/textDescription"
-            app:layout_constraintTop_toBottomOf="@id/textDescription"
-            app:layout_constraintEnd_toEndOf="@id/textDescription"
-            tools:text="Comida" />
+            <!-- Categoría -->
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginEnd="16dp"
+                tools:text="Ingreso" />
 
-        <TextView
-            android:id="@+id/textTransactionDate" 
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textAppearance="?attr/textAppearanceCaption"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintStart_toStartOf="@id/textCategory"
-            app:layout_constraintTop_toBottomOf="@id/textCategory"
-            app:layout_constraintEnd_toEndOf="@id/textCategory"
-            tools:text="17 Sep" />
+            <!-- Fecha -->
+            <TextView
+                android:id="@+id/textTransactionDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="16 sept" />
 
-        <TextView
-            android:id="@+id/textAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:textColor="@android:color/holo_red_dark"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonDeleteTransaction" 
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="$ 20.000" />
+            <!-- Espaciador -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-        <ImageButton
-            android:id="@+id/buttonDeleteTransaction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_delete"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Eliminar transacción"
-            app:tint="@color/design_default_color_error" 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <!-- Botón editar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonEditTransaction"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                app:icon="@drawable/ic_edit"
+                app:iconTint="@color/monifly_primary"
+                app:iconSize="18dp"
+                app:backgroundTint="@android:color/transparent"
+                android:contentDescription="Editar transacción" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Botón eliminar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonDeleteTransaction"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:icon="@drawable/ic_delete"
+                app:iconTint="@color/expense_red"
+                app:iconSize="18dp"
+                app:backgroundTint="@android:color/transparent"
+                android:contentDescription="Eliminar transacción" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

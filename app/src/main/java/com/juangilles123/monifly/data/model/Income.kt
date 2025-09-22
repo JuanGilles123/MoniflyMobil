@@ -11,5 +11,7 @@ data class Income(
     val amount: Double,
     val description: String? = null, // Opcional
     val date: String, // Formato "yyyy-MM-dd" como lo establecimos
+    val category: String? = null, // Categoría del ingreso - nullable para compatibilidad
+    val account: String? = null, // Cuenta/método de pago - nullable para compatibilidad
     val createdAt: Long? = null // Modificado: Hecho nulable, valor por defecto null. La BD debería usar DEFAULT now().
 )

@@ -1,69 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/debtCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="2dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textViewDebtDescription"
-            android:layout_width="0dp"
+        <!-- Fila principal con nombre y monto -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textViewDebtAmount"
-            android:layout_marginEnd="8dp"
-            tools:text="Compra de teclado mecánico para el setup de mi casa" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
 
-        <TextView
-            android:id="@+id/textViewDebtPerson"
-            android:layout_width="0dp"
+            <!-- Nombre completo de la deuda/persona -->
+            <TextView
+                android:id="@+id/textViewDebtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginEnd="16dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Carlos Pérez García" />
+
+            <!-- Monto de la deuda -->
+            <TextView
+                android:id="@+id/textViewDebtAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="$36.200,00" />
+
+        </LinearLayout>
+
+        <!-- Fila con estado y botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDebtDescription"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewDeleteDebt"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="A: Juan Alberto Pérez Rodríguez de la Santa Trinidad" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/textViewDebtAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewDeleteDebt"
-            app:layout_constraintTop_toTopOf="@+id/textViewDebtDescription"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewDebtDescription"
-            android:layout_marginEnd="8dp"
-            tools:text="$150.000.00" />
+            <!-- Estado de la deuda -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDebtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pendiente"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                app:chipBackgroundColor="@color/monifly_primary"
+                app:chipStrokeWidth="0dp"
+                app:chipMinHeight="32dp"
+                app:ensureMinTouchTargetSize="false" />
 
-        <ImageView
-            android:id="@+id/imageViewDeleteDebt"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@android:drawable/ic_menu_delete"
-            android:contentDescription="Eliminar deuda"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewDebtDescription"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewDebtDescription"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="?android:attr/textColorSecondary" />
+            <!-- Espaciador -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <!-- Botón marcar como pagado -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/markAsPaidButton"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                app:icon="@drawable/ic_check"
+                app:iconTint="@color/income_green"
+                app:iconSize="18dp"
+                app:backgroundTint="@android:color/transparent"
+                android:contentDescription="Marcar como pagado" />
+
+            <!-- Botón editar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/editButton"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                app:icon="@drawable/ic_edit"
+                app:iconTint="@color/monifly_primary"
+                app:iconSize="18dp"
+                app:backgroundTint="@android:color/transparent"
+                android:contentDescription="Editar deuda" />
+
+            <!-- Botón eliminar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteButton"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:icon="@drawable/ic_delete"
+                app:iconTint="@color/expense_red"
+                app:iconSize="18dp"
+                app:backgroundTint="@android:color/transparent"
+                android:contentDescription="Eliminar deuda" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
